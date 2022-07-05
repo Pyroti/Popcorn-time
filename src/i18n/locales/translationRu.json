@@ -1,0 +1,33 @@
+{
+  "language": {
+    "en": "Английский",
+    "ru": "Русский"
+  },
+  "header": {
+    "signIn": "Войти",
+    "signUp": "Регистрация"
+  },
+  "auth": {
+    "welcome": "С возвращением!",
+    "signInWith": "Войти с помощью",
+    "signUpWith": "Зарегистрироваться с помощью",
+    "enterName": "Введите имя пользователя",
+    "enterEmail": "Введите почту",
+    "enterPassword": "Введите пароль",
+    "confirmYourPassword": "Подтвердите вам пароль",
+    "userName": "Имя пользователя",
+    "email": "Почта",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердить пароль", 
+    "dontHaveAnAccount": "У вас нет аккаунта?",
+    "haveAnAccount": "У вас уже есть аккаунт?",
+    "signIn": "Войти",
+    "signUp": "Регистрация"
+  },
+  "errors": {
+    "requiredField": "Обязательное поле",
+    "invalidMail": "Почта введена некорректно",
+    "invalidPassword": "Пароль должен состоять минимум из 6 символов",
+    "invalidConfirmPassword": "Пароли не совпадают"
+  }
+}
