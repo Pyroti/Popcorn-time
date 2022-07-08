@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "502971375351",
+    "project_id": "popcorn-time-6053d",
+    "storage_bucket": "popcorn-time-6053d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502971375351:android:b4ddc944e110d9b537bdf2",
+        "android_client_info": {
+          "package_name": "com.popcorntime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "502971375351-vvuhjuq6l4k0tedo390vslhctt0fvkrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv5WVdMRuFLrw7TRTTaqHoSz6jJNl-Hbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "502971375351-vvuhjuq6l4k0tedo390vslhctt0fvkrq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "502971375351-co6telkqlbhvutdtr932193rfh6unmho.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.PopcornTime"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

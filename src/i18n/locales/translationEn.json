@@ -5,7 +5,8 @@
   },
   "header": {
     "signIn": "Sign in",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "home": "Home"
   },
   "auth": {
     "welcome": "Welcome Back!",
@@ -22,7 +23,8 @@
     "dontHaveAnAccount": "Don't have an account?",
     "haveAnAccount": "You already have an account?",
     "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "logout": "Logout"
   },
   "errors": {
     "requiredField": "Required field",

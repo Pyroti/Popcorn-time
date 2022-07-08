@@ -5,7 +5,8 @@
   },
   "header": {
     "signIn": "Войти",
-    "signUp": "Регистрация"
+    "signUp": "Регистрация",
+    "home": "Домашняя страница"
   },
   "auth": {
     "welcome": "С возвращением!",
@@ -22,7 +23,8 @@
     "dontHaveAnAccount": "У вас нет аккаунта?",
     "haveAnAccount": "У вас уже есть аккаунт?",
     "signIn": "Войти",
-    "signUp": "Регистрация"
+    "signUp": "Регистрация",
+    "logout": "Выход"
   },
   "errors": {
     "requiredField": "Обязательное поле",

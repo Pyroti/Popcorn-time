@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import { TAuthStackScreenProps } from '../../navigation';
@@ -14,12 +15,14 @@ import {
 } from '../../components/authStyles';
 import AuthTextInput from '../../components/inputs/authTextInput/authTextInput';
 import AuthButton from '../../components/buttons/authButton/authButton';
+import { registerFirabase } from '../../store/actions/auth/registerAction';
 
 const SignUp: React.FC<TAuthStackScreenProps> = ({ navigation }) => {
   const [isSecurity, setIsSecurity] = useState(true);
   const [isSecurityConfirm, setIsSecurityConfirm] = useState(true);
 
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const changeSecurityPassword = () => {
     setIsSecurity((prevIsSecurity) => !prevIsSecurity);
@@ -45,7 +48,10 @@ const SignUp: React.FC<TAuthStackScreenProps> = ({ navigation }) => {
         <Formik
           initialValues={{ name: '', email: '', password: '', confirmPassword: '' }}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => {
+            const { email, password, name } = values;
+            dispatch(registerFirabase(email, password, name));
+          }}
         >
           {({ handleChange, handleSubmit, values, errors, touched }) => (
             <AuthTextInputContainer>

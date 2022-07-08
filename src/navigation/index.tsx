@@ -4,10 +4,14 @@ import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navig
 import { t } from 'i18next';
 import SignIn from '../screens/signIn/SignIn';
 import SignUp from '../screens/signUp/SignUp';
+import { useTypedSelector } from '../hooks/useTypeSelector';
+import authSelector from '../store/selector/authSelector';
+import Home from '../screens/home/Home';
 
 export interface IAuthStackParamList extends ParamListBase {
   SignIn: undefined;
   SignUp: undefined;
+  Home: undefined;
 }
 
 export type TAuthStackScreenProps<T extends keyof IAuthStackParamList = string> =
@@ -38,8 +42,24 @@ const AuthenticationStack = () => (
   </Stack.Navigator>
 );
 
+const MainStack = () => (
+  <Stack.Navigator initialRouteName="Home">
+    <Stack.Screen
+      name="Home"
+      component={Home}
+      options={{
+        headerTitle: t('header.home'),
+        headerShadowVisible: false,
+        headerBackTitleVisible: false,
+      }}
+    />
+  </Stack.Navigator>
+);
+
 const Navigator = () => {
-  return AuthenticationStack();
+  const { currentUser } = useTypedSelector(authSelector);
+
+  return !currentUser ? AuthenticationStack() : MainStack();
 };
 
 export default Navigator;

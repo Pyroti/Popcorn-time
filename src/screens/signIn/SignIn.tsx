@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import IconEvilIcons from 'react-native-vector-icons/EvilIcons';
 import { TAuthStackScreenProps } from '../../navigation';
@@ -10,20 +11,32 @@ import {
   AuthTextInputContainer,
   AuthTitle,
   AuthView,
+  SignWithContainer,
+  SignWithLine,
+  SignWithText,
   SingUpButton,
   Spoiler,
   SupportContainer,
 } from '../../components/authStyles';
 import AuthTextInput from '../../components/inputs/authTextInput/authTextInput';
 import AuthButton from '../../components/buttons/authButton/authButton';
+import { loginFirabase } from '../../store/actions/auth/loginAction';
+import { loginGoogleFirabase } from '../../store/actions/auth/loginGoogleAction';
+import IconButton from '../../components/buttons/iconButton/IconButton';
+import Images from '../../constants/images';
 
 const SignIn: React.FC<TAuthStackScreenProps> = ({ navigation }) => {
   const [isSecurity, setIsSecurity] = useState(true);
 
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const changeSecurityPassword = () => {
     setIsSecurity((prevIsSecurity) => !prevIsSecurity);
+  };
+
+  const signInWithGoogle = () => {
+    dispatch(loginGoogleFirabase());
   };
 
   const validationSchema = yup.object().shape({
@@ -38,7 +51,10 @@ const SignIn: React.FC<TAuthStackScreenProps> = ({ navigation }) => {
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => {
+            const { email, password } = values;
+            dispatch(loginFirabase(email, password));
+          }}
         >
           {({ handleChange, handleSubmit, values, errors, touched }) => (
             <AuthTextInputContainer>
@@ -72,6 +88,12 @@ const SignIn: React.FC<TAuthStackScreenProps> = ({ navigation }) => {
             </AuthTextInputContainer>
           )}
         </Formik>
+        <SignWithContainer>
+          <SignWithLine />
+          <SignWithText>{t('auth.signInWith')}</SignWithText>
+          <SignWithLine />
+        </SignWithContainer>
+        <IconButton link={Images.googleIcon} onPress={signInWithGoogle} />
         <SupportContainer>
           <Spoiler>{t('auth.dontHaveAnAccount')}</Spoiler>
           <SingUpButton onPress={() => navigation.navigate('SignUp')}>
