@@ -1,0 +1,33 @@
+{
+  "language": {
+    "en": "English",
+    "ru": "Russian"
+  },
+  "header": {
+    "signIn": "Sign in",
+    "signUp": "Sign up"
+  },
+  "auth": {
+    "welcome": "Welcome Back!",
+    "signInWith": "Sign in with",
+    "signUpWith": "Sign up with",
+    "enterName": "Enter your user name",
+    "enterEmail": "Enter your email",
+    "enterPassword": "Enter your password",
+    "confirmYourPassword": "Confirm your Password",
+    "userName": "User Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password", 
+    "dontHaveAnAccount": "Don't have an account?",
+    "haveAnAccount": "You already have an account?",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "errors": {
+    "requiredField": "Required field",
+    "invalidMail": "Invalid mail",
+    "invalidPassword": "Password should be 6 chars minimum.",
+    "invalidConfirmPassword": "Passwords do not match"
+  }
+}
