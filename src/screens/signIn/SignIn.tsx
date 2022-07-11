@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
+import { Keyboard, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useFormik } from 'formik';
@@ -20,10 +20,9 @@ import AuthTextInput from '../../components/inputs/authTextInput/authTextInput';
 import AuthButton from '../../components/buttons/authButton/authButton';
 import { AuthStackParamList } from '../../navigation';
 import { AuthStack } from '../../constants/authStack';
+import { keyboardAvoidingBehavior } from '../../constants/keyboardAvoidingBehavior';
 
-type navigation = NativeStackNavigationProp<AuthStackParamList, AuthStack.SignIn>;
-
-const keyboardBehavior = Platform.OS === 'ios' ? 'padding' : 'height';
+type Navigation = NativeStackNavigationProp<AuthStackParamList, AuthStack.SignIn>;
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -38,7 +37,7 @@ const validationSchema = yup.object().shape({
 
 const SignIn: React.FC = () => {
   const [isSecurity, setIsSecurity] = useState(true);
-  const navigation = useNavigation<navigation>();
+  const navigation = useNavigation<Navigation>();
 
   const { t } = useTranslation();
 
@@ -57,7 +56,7 @@ const SignIn: React.FC = () => {
   });
 
   return (
-    <KeyboardAvoidingView behavior={keyboardBehavior}>
+    <KeyboardAvoidingView behavior={keyboardAvoidingBehavior}>
       <AuthView onPress={Keyboard.dismiss}>
         <AuthTitle>{t('auth.welcome')}</AuthTitle>
         <AuthTextInputContainer>

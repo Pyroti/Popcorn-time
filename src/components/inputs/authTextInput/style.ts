@@ -7,6 +7,7 @@ export const AuthInput = styled(TextInput)`
   color: ${(props) => props.theme.colors.black};
   width: ${scale(240)}px;
   margin: ${Math.round(verticalScale(8))}px 0;
+  padding: 0;
 `;
 
 export const AuthView = styled(View)<{ isFocused: boolean }>`
