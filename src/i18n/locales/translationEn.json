@@ -30,6 +30,8 @@
     "requiredField": "Required field",
     "invalidMail": "Invalid mail",
     "invalidPassword": "Password should be 6 chars minimum.",
-    "invalidConfirmPassword": "Passwords do not match"
+    "invalidConfirmPassword": "Passwords do not match",
+    "userDoesNotExsist": "User doesn't exisist",
+    "emailAlreadyExists": "Email already exists"
   }
 }

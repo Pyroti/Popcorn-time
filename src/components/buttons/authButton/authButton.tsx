@@ -1,5 +1,5 @@
 import React from 'react';
-import { AText, AView } from './style';
+import { AuthButtonText, AuthButtonView } from './style';
 
 interface authButtonProps {
   text: string;
@@ -7,9 +7,9 @@ interface authButtonProps {
 }
 
 const AuthButton: React.FC<authButtonProps> = ({ text = '', onPress }) => (
-  <AView onPress={onPress}>
-    <AText>{text}</AText>
-  </AView>
+  <AuthButtonView onPress={onPress}>
+    <AuthButtonText>{text}</AuthButtonText>
+  </AuthButtonView>
 );
 
 export default AuthButton;

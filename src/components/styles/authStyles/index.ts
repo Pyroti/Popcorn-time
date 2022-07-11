@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { View, Pressable } from 'react-native';
-import { Text } from '../../../globalStyled';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+import { Text } from '../globalStyled';
 
 export const AuthView = styled(Pressable)`
   display: flex;
@@ -8,13 +9,13 @@ export const AuthView = styled(Pressable)`
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.colors.white};
 `;
 
 export const AuthTitle = styled(Text)`
-  font-size: 26px;
-  color: ${(props) => props.theme.main};
-  margin-bottom: 50px;
+  font-size: ${moderateScale(29)}px;
+  color: ${(props) => props.theme.colors.main};
+  margin-bottom: ${verticalScale(45)}px;
 `;
 
 export const AuthTextInputContainer = styled(View)`
@@ -24,28 +25,28 @@ export const AuthTextInputContainer = styled(View)`
 `;
 
 export const Spoiler = styled(Text)`
-  color: ${(props) => props.theme.grayText};
-  font-size: 14px;
+  color: ${(props) => props.theme.colors.grayText};
+  font-size: ${moderateScale(12)}px;
 `;
 
 export const SingUpButton = styled(Text)`
-  color: ${(props) => props.theme.main};
-  font-size: 14px;
-  margin-left: 5px;
+  color: ${(props) => props.theme.colors.main};
+  font-size: ${moderateScale(14)}px;
+  margin-left: ${scale(5)}px;
 `;
 
 export const SignButton = styled(Text)`
-  margin-top: 10px;
-  background-color: ${(props) => props.theme.main};
-  color: ${(props) => props.theme.white};
+  margin-top: ${verticalScale(10)}px;
+  background-color: ${(props) => props.theme.colors.main};
+  color: ${(props) => props.theme.colors.white};
   text-align: center;
-  height: 20px;
-  width: 350px;
+  height: ${verticalScale(20)}px;
+  width: ${scale(315)}px;
   border-radius: 20;
 `;
 
 export const SupportContainer = styled(View)`
-  margin-top: 20px;
+  margin-top: ${verticalScale(20)}px;
   display: flex;
   flex-direction: row;
   align-items: center;

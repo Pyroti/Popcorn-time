@@ -30,6 +30,8 @@
     "requiredField": "Обязательное поле",
     "invalidMail": "Почта введена некорректно",
     "invalidPassword": "Пароль должен состоять минимум из 6 символов",
-    "invalidConfirmPassword": "Пароли не совпадают"
+    "invalidConfirmPassword": "Пароли не совпадают",
+    "userDoesNotExsist": "Пользователь не существует",
+    "emailAlreadyExists": "Почта уже существует"
   }
 }

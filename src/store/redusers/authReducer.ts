@@ -46,6 +46,11 @@ const authReducer = (state = initialState, action: ActionTypes): AuthState => {
         loading: false,
         error: action.payload.error,
       };
+    case LoginActionTypes.LOGIN_FAIL_CLEAR:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

@@ -1,28 +1,29 @@
 import React from 'react';
 import { ParamListBase } from '@react-navigation/native';
-import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { t } from 'i18next';
-import SignIn from '../screens/signIn/SignIn';
-import SignUp from '../screens/signUp/SignUp';
 import { useTypedSelector } from '../hooks/useTypeSelector';
 import authSelector from '../store/selector/authSelector';
+import { AuthStack, MainStack } from '../constants/stack';
+import SignIn from '../screens/signIn/SignIn';
+import SignUp from '../screens/signUp/SignUp';
 import Home from '../screens/home/Home';
 
-export interface IAuthStackParamList extends ParamListBase {
-  SignIn: undefined;
-  SignUp: undefined;
-  Home: undefined;
+export interface AuthStackParamList extends ParamListBase {
+  [AuthStack.SignIn]: undefined;
+  [AuthStack.SignUp]: undefined;
 }
 
-export type TAuthStackScreenProps<T extends keyof IAuthStackParamList = string> =
-  NativeStackScreenProps<IAuthStackParamList, T>;
+export interface MainStackParamList extends ParamListBase {
+  [MainStack.Home]: undefined;
+}
 
-const Stack = createNativeStackNavigator<IAuthStackParamList>();
+const Stack = createNativeStackNavigator<AuthStackParamList | MainStackParamList>();
 
-const AuthenticationStack = () => (
-  <Stack.Navigator initialRouteName="SignIn">
+const AuthenticationNavigationStack = () => (
+  <Stack.Navigator initialRouteName={AuthStack.SignIn}>
     <Stack.Screen
-      name="SignIn"
+      name={AuthStack.SignIn}
       component={SignIn}
       options={{
         headerTitle: t('header.signIn'),
@@ -31,7 +32,7 @@ const AuthenticationStack = () => (
       }}
     />
     <Stack.Screen
-      name="SignUp"
+      name={AuthStack.SignUp}
       component={SignUp}
       options={{
         headerTitle: t('header.signUp'),
@@ -42,10 +43,10 @@ const AuthenticationStack = () => (
   </Stack.Navigator>
 );
 
-const MainStack = () => (
-  <Stack.Navigator initialRouteName="Home">
+const MainNavigationStack = () => (
+  <Stack.Navigator initialRouteName={MainStack.Home}>
     <Stack.Screen
-      name="Home"
+      name={MainStack.Home}
       component={Home}
       options={{
         headerTitle: t('header.home'),
@@ -59,7 +60,7 @@ const MainStack = () => (
 const Navigator = () => {
   const { currentUser } = useTypedSelector(authSelector);
 
-  return !currentUser ? AuthenticationStack() : MainStack();
+  return !currentUser ? AuthenticationNavigationStack() : MainNavigationStack();
 };
 
 export default Navigator;

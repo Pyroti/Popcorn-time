@@ -1,5 +1,4 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { FirebaseError } from 'firebase/app';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { LoginGoogleActionTypes } from '../../types/auth/loginGoogleTypes';
@@ -20,10 +19,8 @@ function* loginGoogleWorker() {
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
     const { user } = yield auth().signInWithCredential(googleCredential);
     yield put(loginGoogleSuccess(user));
-  } catch (error: FirebaseError | unknown) {
-    if (error instanceof FirebaseError) {
-      put(loginGoogleFail(error.name));
-    }
+  } catch (error: any) {
+    yield put(loginGoogleFail(error.code));
   }
 }
 

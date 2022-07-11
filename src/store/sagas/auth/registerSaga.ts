@@ -1,5 +1,4 @@
 import { put, takeEvery } from 'redux-saga/effects';
-import { FirebaseError } from 'firebase/app';
 import auth from '@react-native-firebase/auth';
 import { registerFail, registerStart, registerSuccess } from '../../actions/auth/registerAction';
 import { RegisterActionTypes, registerFirabaseAction } from '../../types/auth/registerTypes';
@@ -14,10 +13,8 @@ function* registerWorker(action: registerFirabaseAction) {
     });
     const user = auth().currentUser as firebase.default.User | null;
     yield put(registerSuccess(user));
-  } catch (error: FirebaseError | unknown) {
-    if (error instanceof FirebaseError) {
-      put(registerFail(error.name));
-    }
+  } catch (error: any) {
+    yield put(registerFail(error.code));
   }
 }
 
