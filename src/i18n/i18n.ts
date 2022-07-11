@@ -9,8 +9,8 @@ i18n.use(initReactI18next).init({
     en: { translation: translationEn },
     ru: { translation: translationRu },
   },
-  lng: Languages.en,
-  fallbackLng: Languages.en,
+  lng: Languages.En,
+  fallbackLng: Languages.En,
   compatibilityJSON: 'v3',
   interpolation: { escapeValue: false },
 });

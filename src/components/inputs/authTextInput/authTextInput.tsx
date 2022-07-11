@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { LayoutAnimation, TextInputProps } from 'react-native';
 import LightTheme from '../../../constants/theme';
 import {
-  AErrorText,
-  AIcon,
-  ALabelText,
-  ATextInput,
-  AView,
-  AViewContainer,
-  AViewLeftContent,
+  AuthErrorText,
+  AuthIcon,
+  AuthLabelText,
+  AuthInput,
+  AuthView,
+  AuthViewContainer,
+  AuthViewLeftContent,
 } from './style';
 
 interface AuthTextInputProps extends TextInputProps {
@@ -31,7 +31,7 @@ const AuthTextInput: React.FC<AuthTextInputProps> = ({
   iconLeft,
   iconRight,
   errorText = '',
-  placeholderTextColor = LightTheme.textGray,
+  placeholderTextColor = LightTheme.colors.textGray,
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -40,13 +40,21 @@ const AuthTextInput: React.FC<AuthTextInputProps> = ({
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
   }, [hasError]);
 
+  const makeOutline = () => {
+    setIsFocused(true);
+  };
+
+  const removeOutline = () => {
+    setIsFocused(false);
+  };
+
   return (
     <>
-      <AViewContainer>
-        <AView isFocused={isFocused}>
-          <AViewLeftContent>
-            <AIcon>{iconLeft}</AIcon>
-            <ATextInput
+      <AuthViewContainer>
+        <AuthView isFocused={isFocused}>
+          <AuthViewLeftContent>
+            <AuthIcon>{iconLeft}</AuthIcon>
+            <AuthInput
               {...rest}
               editable={editable}
               autoCapitalize="none"
@@ -56,15 +64,15 @@ const AuthTextInput: React.FC<AuthTextInputProps> = ({
               secureTextEntry={secureTextEntry}
               value={value}
               onChangeText={onChangeText}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
+              onFocus={makeOutline}
+              onBlur={removeOutline}
             />
-          </AViewLeftContent>
-          <AIcon>{iconRight}</AIcon>
-        </AView>
-        <ALabelText>{label}</ALabelText>
-      </AViewContainer>
-      {hasError && <AErrorText>{errorText}</AErrorText>}
+          </AuthViewLeftContent>
+          <AuthIcon>{iconRight}</AuthIcon>
+        </AuthView>
+        <AuthLabelText>{label}</AuthLabelText>
+      </AuthViewContainer>
+      {hasError && <AuthErrorText>{errorText}</AuthErrorText>}
     </>
   );
 };

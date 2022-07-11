@@ -1,24 +1,22 @@
 import React from 'react';
 import { ParamListBase } from '@react-navigation/native';
-import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { t } from 'i18next';
 import SignIn from '../screens/signIn/SignIn';
 import SignUp from '../screens/signUp/SignUp';
+import { AuthStack } from '../constants/authStack';
 
-export interface IAuthStackParamList extends ParamListBase {
-  SignIn: undefined;
-  SignUp: undefined;
+export interface AuthStackParamList extends ParamListBase {
+  [AuthStack.SignIn]: undefined;
+  [AuthStack.SignUp]: undefined;
 }
 
-export type TAuthStackScreenProps<T extends keyof IAuthStackParamList = string> =
-  NativeStackScreenProps<IAuthStackParamList, T>;
-
-const Stack = createNativeStackNavigator<IAuthStackParamList>();
+const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 const AuthenticationStack = () => (
-  <Stack.Navigator initialRouteName="SignIn">
+  <Stack.Navigator initialRouteName={AuthStack.SignIn}>
     <Stack.Screen
-      name="SignIn"
+      name={AuthStack.SignIn}
       component={SignIn}
       options={{
         headerTitle: t('header.signIn'),
@@ -27,7 +25,7 @@ const AuthenticationStack = () => (
       }}
     />
     <Stack.Screen
-      name="SignUp"
+      name={AuthStack.SignUp}
       component={SignUp}
       options={{
         headerTitle: t('header.signUp'),
