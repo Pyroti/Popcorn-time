@@ -26,6 +26,7 @@ const authReducer = (state = initialState, action: ActionTypes): AuthState => {
     case LoginGoogleActionTypes.LOGIN_GOOGLE_START:
       return {
         ...state,
+        error: null,
         loading: true,
       };
     case RegisterActionTypes.REGISTER_SUCCESS:
@@ -45,11 +46,6 @@ const authReducer = (state = initialState, action: ActionTypes): AuthState => {
         ...state,
         loading: false,
         error: action.payload.error,
-      };
-    case LoginActionTypes.LOGIN_FAIL_CLEAR:
-      return {
-        ...state,
-        error: null,
       };
     default:
       return state;
