@@ -51,3 +51,19 @@ export const SupportContainer = styled(View)`
   flex-direction: row;
   align-items: center;
 `;
+
+export const SignWithContainer = styled(View)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+export const SignWithText = styled(Text)`
+  color: ${(props) => props.theme.main};
+`;
+
+export const SignWithLine = styled(View)`
+  border-top: 10px solid ${(props) => props.theme.main};
+  width: 40px;
+`;

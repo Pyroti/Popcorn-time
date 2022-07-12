@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import { Keyboard, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -16,9 +17,13 @@ import {
 } from '../../components/styles/authStyles';
 import AuthTextInput from '../../components/inputs/authTextInput/authTextInput';
 import AuthButton from '../../components/buttons/authButton/authButton';
+import { registerFirabase } from '../../store/actions/auth/registerAction';
 import { AuthStackParamList } from '../../navigation';
-import { AuthStack } from '../../constants/authStack';
+import { AuthStack } from '../../constants/stack';
 import { keyboardAvoidingBehavior } from '../../constants/keyboardAvoidingBehavior';
+import { FirabaseErrorCodes } from '../../constants/firabaseError';
+import { useTypedSelector } from '../../hooks/useTypeSelector';
+import authSelector from '../../store/selector/authSelector';
 
 type Navigation = NativeStackNavigationProp<AuthStackParamList, AuthStack.SignUp>;
 
@@ -41,10 +46,12 @@ const validationSchema = yup.object().shape({
 const SignUp: React.FC = () => {
   const [isSecurity, setIsSecurity] = useState(true);
   const [isSecurityConfirm, setIsSecurityConfirm] = useState(true);
+  const { error } = useTypedSelector(authSelector);
 
   const navigation = useNavigation<Navigation>();
 
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const changeSecurityPassword = () => {
     setIsSecurity((prevIsSecurity) => !prevIsSecurity);
@@ -61,8 +68,18 @@ const SignUp: React.FC = () => {
   const formik = useFormik({
     initialValues: { name: '', email: '', password: '', confirmPassword: '' },
     validationSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      const { email, password, name } = values;
+      dispatch(registerFirabase(email, password, name));
+    },
   });
+
+  useEffect(() => {
+    if (error === FirabaseErrorCodes.emailAlreadyExists) {
+      formik.setFieldError('email', t('errors.emailAlreadyExists'));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error]);
 
   return (
     <KeyboardAvoidingView behavior={keyboardAvoidingBehavior}>

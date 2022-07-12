@@ -5,7 +5,8 @@
   },
   "header": {
     "signIn": "Sign in",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "home": "Home"
   },
   "auth": {
     "welcome": "Welcome Back!",
@@ -22,12 +23,15 @@
     "dontHaveAnAccount": "Don't have an account?",
     "haveAnAccount": "You already have an account?",
     "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "logout": "Logout"
   },
   "errors": {
     "requiredField": "Required field",
     "invalidMail": "Invalid mail",
     "invalidPassword": "Password should be 6 chars minimum.",
-    "invalidConfirmPassword": "Passwords do not match"
+    "invalidConfirmPassword": "Passwords do not match",
+    "userDoesNotExsist": "User doesn't exisist",
+    "emailAlreadyExists": "Email already exists"
   }
 }
