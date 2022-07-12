@@ -1,6 +1,0 @@
-module Pods_PopcornTime_PopcornTimeTests {
-  umbrella header "Pods-PopcornTime-PopcornTimeTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
