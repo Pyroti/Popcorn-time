@@ -3,6 +3,11 @@ export enum AuthStack {
   SignUp = '[Auth] Sign Up',
 }
 
+export enum TabStack {
+  Home = '[Tab] Home',
+  Profile = '[Tab] Profile',
+}
+
 export enum MainStack {
-  Home = '[Main] Home',
+  Tab = '[Main] Tab',
 }

@@ -14,7 +14,6 @@ import {
   AuthTitle,
   AuthView,
   SignWithContainer,
-  SignWithLine,
   SignWithText,
   SingUpButton,
   Spoiler,
@@ -117,9 +116,7 @@ const SignIn: React.FC = () => {
           <AuthButton text={t('auth.signIn')} onPress={formik.handleSubmit} />
         </AuthTextInputContainer>
         <SignWithContainer>
-          <SignWithLine />
           <SignWithText>{t('auth.signInWith')}</SignWithText>
-          <SignWithLine />
         </SignWithContainer>
         <IconButton link={Images.googleIcon} onPress={signInWithGoogle} />
         <SupportContainer>

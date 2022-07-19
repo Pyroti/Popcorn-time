@@ -6,6 +6,8 @@ const LightTheme = {
     black: '#000',
     textGray: '#c5c5c5',
     alertRed: '#ff5754',
+    gradientLeft: '#8967F2',
+    gradientRight: '#D76AC3',
   },
   fonts: {
     poppinsBold: 'Poppins-Bold',

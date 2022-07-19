@@ -5,6 +5,7 @@ import { Platform, UIManager } from 'react-native';
 import { Provider } from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Navigator from './navigation';
 import './i18n/i18n';
 import LightTheme from './constants/theme';
@@ -12,6 +13,7 @@ import { store } from './store/store';
 
 Ionicons.loadFont();
 EvilIcons.loadFont();
+SimpleLineIcons.loadFont();
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {

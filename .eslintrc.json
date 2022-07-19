@@ -48,6 +48,7 @@
 		"no-shadow": "off",
 		"no-undef": "off",
 		"global-require": "off",
+		"react/no-unstable-nested-components": "off",
 		"import/extensions": [
 			"error",
 			"ignorePackages",

@@ -1,13 +1,13 @@
 import React from 'react';
-import { ParamListBase } from '@react-navigation/native';
+import { NavigatorScreenParams, ParamListBase } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { t } from 'i18next';
 import { useTypedSelector } from '../hooks/useTypeSelector';
 import authSelector from '../store/selector/authSelector';
-import { AuthStack, MainStack } from '../constants/stack';
+import { AuthStack, MainStack, TabStack } from '../constants/stack';
 import SignIn from '../screens/signIn/SignIn';
 import SignUp from '../screens/signUp/SignUp';
-import Home from '../screens/home/Home';
+import TabNavigator, { TabStackParamList } from './tabNavigation';
 
 export interface AuthStackParamList extends ParamListBase {
   [AuthStack.SignIn]: undefined;
@@ -15,7 +15,7 @@ export interface AuthStackParamList extends ParamListBase {
 }
 
 export interface MainStackParamList extends ParamListBase {
-  [MainStack.Home]: undefined;
+  [MainStack.Tab]: NavigatorScreenParams<TabStackParamList>;
 }
 
 const Stack = createNativeStackNavigator<AuthStackParamList | MainStackParamList>();
@@ -44,16 +44,8 @@ const AuthenticationNavigationStack = () => (
 );
 
 const MainNavigationStack = () => (
-  <Stack.Navigator initialRouteName={MainStack.Home}>
-    <Stack.Screen
-      name={MainStack.Home}
-      component={Home}
-      options={{
-        headerTitle: t('header.home'),
-        headerShadowVisible: false,
-        headerBackTitleVisible: false,
-      }}
-    />
+  <Stack.Navigator initialRouteName={TabStack.Home}>
+    <Stack.Screen name={MainStack.Tab} component={TabNavigator} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
 

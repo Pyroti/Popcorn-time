@@ -6,7 +6,8 @@
   "header": {
     "signIn": "Sign in",
     "signUp": "Sign up",
-    "home": "Home"
+    "home": "Home",
+    "profile": "Profile"
   },
   "auth": {
     "welcome": "Welcome Back!",
@@ -25,6 +26,9 @@
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "logout": "Logout"
+  },
+  "home": {
+    "hello": "Hello"
   },
   "errors": {
     "requiredField": "Required field",
